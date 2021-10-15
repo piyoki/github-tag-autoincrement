@@ -120,7 +120,7 @@ then
 elif [ "$MODE" == 'WRITE' ]
 then
 	echo "Writing to .tags file"
-	echo "${NEW_TAG}">./.tags
+	echo "${NEW_TAG}" > ./tag
 else
 	echo "Tagging the remote repo"
 	response=$(curl -sS -X POST \
