@@ -27,7 +27,7 @@ ghcr-login:
 
 local-run:
 	@docker run -it --rm --name $(IMAGE_NAME) \
-		-e "GITHUB_API_REPO_URL=https://api.github.com/$(GITHUB_USERNAME)/$(GITHUB_REPO_NAME)" \
+		-e "GITHUB_API_REPO_URL=https://api.github.com/repos/$(GITHUB_USERNAME)/$(GITHUB_REPO_NAME)" \
   	-e "TAG_PREFIX=$(TAG_PREFIX)" \
   	-e "GITHUB_USERNAME=$(GITHUB_USERNAME)" \
   	-e "GITHUB_TOKEN=$(GITHUB_TOKEN)" \
