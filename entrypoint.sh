@@ -128,7 +128,7 @@ else
 	response=$(curl -sS -X POST \
         "${AUTH[@]}" \
         --header "Content-Type:application/json" \
-        --data '{"tag": "'${NEW_TAG}'","message":"'${DEFAULT_MESSAGE}''${LAST_COMMIT}'","type":"commit","object":"'${LAST_COMMIT}'"}' \
+        --data '{"tag": "'${NEW_TAG}'","message":"nihao","type":"commit","object":"'${LAST_COMMIT}'"}' \
         ${GITHUB_API_REPO_URL}/git/tags)
     NEW_TAG_SHA=$(echo "$response" | jq -r '.sha')
 	echo "New Tag Sha: ${NEW_TAG_SHA}"
