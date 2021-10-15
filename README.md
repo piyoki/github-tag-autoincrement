@@ -27,7 +27,7 @@ If you just need to know the version in making so that you can tag your artifact
 
 ```bash
 docker run \
-  -e "GITHUB_API_REPO_URL=https://api.github.com/<YOURUSERNAME>/<YOURREPONAME>" \
+  -e "GITHUB_API_REPO_URL=https://api.github.com/repos/<YOURUSERNAME>/<YOURREPONAME>" \
   -e "TAG_PREFIX=v" \
   -e "GITHUB_USERNAME=<YOURUSERNAME>" \
   -e "GITHUB_TOKEN=<YOURTOKEN>" \
