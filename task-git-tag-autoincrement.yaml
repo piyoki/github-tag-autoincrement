@@ -1,0 +1,44 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: Task
+metadata:
+  name: task-git-tag-autoincrement
+spec:
+  workspaces:
+    - name: source
+      description: shared-workspace that holds the source code
+  params:
+    - name: TAG_PREFIX
+      description: prefix for the verison tag
+    - name: MODE
+      description: mode [READONLY, WRITE, APPLY]
+    - name: GITHUB_USERNAME
+      description: username for the github repo
+    - name: GITHUB_REPO
+      description: github repository name
+    - name: GITHUB_TOKEN
+      description: token for accessing GitHub
+  volumes:
+    - name: github-secret
+      secret:
+        secretName: regcred
+        items:
+          - key: .dockerconfigjson
+            path: config.json
+  steps:
+    - name: fetch-tag-and-autoincrement
+      image: ghcr.io/yqlbu/github-tag-autoincrement
+      envVar:
+        - name: TAG_PREFIX
+          value: $(params.TAG_PREFIX)
+        - name: MODE
+          value: $(params.MDOE)
+        - name: GITHUB_REPO
+          value: $(params.GITHUB_REPO)
+        - name: GITHUB_USERNAME
+          value: $(params.GITHUB_USERNAME)
+        - name: GITHUB_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: GITHUB_TOKEN
+              key: $(params.GITHUB_TOKEN)
