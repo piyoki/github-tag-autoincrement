@@ -15,22 +15,23 @@ This Docker image is intended to use with your CICD pipeline (Jenkins, Tekton) a
 
 ```bash
 docker run \
-     -e "GITHUB_API_REPO_URL=https://api.github.com/repos/so-random-dude/oneoffcodes" \
-     -e "TAG_PREFIX=v" \
-     -e "GITHUB_USERNAME=<YOURUSERNAME>" \
-     -e "GITHUB_PASSWORD=<YOURPASSWORD>" \
-     jaisonpjohn/github-tag-autoincrement
+  -e "GITHUB_API_REPO_URL=https://api.github.com/repos/so-random-dude/oneoffcodes" \
+  -e "TAG_PREFIX=v" \
+  -e "GITHUB_USERNAME=<YOURUSERNAME>" \
+  -e "GITHUB_PASSWORD=<YOURPASSWORD>" \
+  -e "COMMIT_MESSAGE=<MESSAGE>" \
+  ghcr.io/yqlbu/github-tag-autoincrement
 ```
 
 If you just need to know the version in making so that you can tag your artifact with that version before you push to your Artifactory (Dockerhub / JFrog Artifactory / ECR / GCR etc), just add "MODE=READONLY"
 
 ```bash
 docker run \
-     -e "GITHUB_API_REPO_URL=https://api.github.com/yqlbu/github-tag-autoincrement" \
-     -e "TAG_PREFIX=v" \
-     -e "GITHUB_USERNAME=<YOURUSERNAME>" \
-     -e "GITHUB_PASSWORD=<YOURPASSWORD>" \
-     -e "COMMIT_MESSAGE=<MESSAGE>" \
-     -e "MODE=READONLY" \
-     ghcr.io/yqlbu/github-tag-autoincrement
+  -e "GITHUB_API_REPO_URL=https://api.github.com/yqlbu/github-tag-autoincrement" \
+  -e "TAG_PREFIX=v" \
+  -e "GITHUB_USERNAME=<YOURUSERNAME>" \
+  -e "GITHUB_PASSWORD=<YOURPASSWORD>" \
+  -e "COMMIT_MESSAGE=<MESSAGE>" \
+  -e "MODE=READONLY" \
+  ghcr.io/yqlbu/github-tag-autoincrement
 ```
