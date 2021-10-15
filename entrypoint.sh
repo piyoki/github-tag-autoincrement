@@ -3,8 +3,6 @@
 DEFAULT_NEW_PATCH_VERSION='0.0.1'
 DEFAULT_GITHUB_API_BASE_URL='https://api.github.com/repos/'
 DEFAULT_TAG_PREFIX='v'
-DEFAULT_MESSAGE='Codecut occurs at ref='
-COMMIT_MESSAGE=''
 
 function deriveApiUrl {
     echo "Deriving API url from DRONE_REPO: ${1}"
@@ -118,8 +116,8 @@ fi
 
 if [ "$MODE" == 'READONLY' ]
 then
-	echo "Read only Mode. So, Exiting!"
-elif [ "$MODE" == 'WRITE_TO_FILE' ]
+	echo "Read only Mode. Please check the tagging result."
+elif [ "$MODE" == 'WRITE' ]
 then
 	echo "Writing to .tags file"
 	echo "${NEW_TAG}">./.tags
@@ -128,9 +126,10 @@ else
 	response=$(curl -sS -X POST \
         "${AUTH[@]}" \
         --header "Content-Type:application/json" \
-        --data '{"tag": "'${NEW_TAG}'","message":"'${DEFAULT_MESSAGE}''${LAST_COMMIT}'","type":"commit","object":"'${LAST_COMMIT}'"}' \
+        --data '{"tag": "'${NEW_TAG}'","message":"Codecut occurs at ref='${LAST_COMMIT}'","type":"commit","object":"'${LAST_COMMIT}'"}' \
         ${GITHUB_API_REPO_URL}/git/tags)
-    NEW_TAG_SHA=$(echo "$response" | jq -r '.sha')
+  NEW_TAG_SHA=$(echo "$response" | jq -r '.sha')
+  echo "Commit Message: Codecut occurs at ref='${LAST_COMMIT}'"
 	echo "New Tag Sha: ${NEW_TAG_SHA}"
 
 	if [ \( -z "$NEW_TAG_SHA" \) -o \( "$NEW_TAG_SHA" == 'null' \) ]
