@@ -35,3 +35,7 @@ docker run \
   -e "MODE=READONLY" \
   ghcr.io/yqlbu/github-tag-autoincrement
 ```
+
+## CI Templates
+
+coming soon...
