@@ -3,7 +3,7 @@
 DEFAULT_NEW_PATCH_VERSION='0.0.1'
 DEFAULT_GITHUB_API_BASE_URL='https://api.github.com/repos/'
 DEFAULT_TAG_PREFIX='v'
-DEFAULT_MESSAGE='Code cut occurs at ref='
+DEFAULT_MESSAGE='Codecut occurs at ref='
 COMMIT_MESSAGE=''
 
 function deriveApiUrl {
