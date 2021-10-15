@@ -15,7 +15,7 @@ This Docker image is intended to use with your CICD pipeline (Jenkins, Tekton) a
 
 ```bash
 docker run \
-  -e "GITHUB_API_REPO_URL=https://api.github.com/repos/so-random-dude/oneoffcodes" \
+  -e "GITHUB_API_REPO_URL=https://api.github.com/repos/<YOURUSERNAME>/<YOURREPONAME>" \
   -e "TAG_PREFIX=v" \
   -e "GITHUB_USERNAME=<YOURUSERNAME>" \
   -e "GITHUB_PASSWORD=<YOURPASSWORD>" \
@@ -27,7 +27,7 @@ If you just need to know the version in making so that you can tag your artifact
 
 ```bash
 docker run \
-  -e "GITHUB_API_REPO_URL=https://api.github.com/yqlbu/github-tag-autoincrement" \
+  -e "GITHUB_API_REPO_URL=https://api.github.com/<YOURUSERNAME>/<YOURREPONAME>" \
   -e "TAG_PREFIX=v" \
   -e "GITHUB_USERNAME=<YOURUSERNAME>" \
   -e "GITHUB_PASSWORD=<YOURPASSWORD>" \
