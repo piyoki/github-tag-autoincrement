@@ -19,7 +19,6 @@ docker run \
   -e "TAG_PREFIX=v" \
   -e "GITHUB_USERNAME=<YOURUSERNAME>" \
   -e "GITHUB_TOKEN=<YOURTOKEN>" \
-  -e "COMMIT_MESSAGE=<MESSAGE>" \
   ghcr.io/yqlbu/github-tag-autoincrement
 ```
 
@@ -31,7 +30,6 @@ docker run \
   -e "TAG_PREFIX=v" \
   -e "GITHUB_USERNAME=<YOURUSERNAME>" \
   -e "GITHUB_TOKEN=<YOURTOKEN>" \
-  -e "COMMIT_MESSAGE=<MESSAGE>" \
   -e "MODE=READONLY" \
   ghcr.io/yqlbu/github-tag-autoincrement
 ```
